@@ -1,4 +1,4 @@
-package com.github.leeg4ng.flygroovy;
+package io.github.leeg4ng.flygroovy;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;

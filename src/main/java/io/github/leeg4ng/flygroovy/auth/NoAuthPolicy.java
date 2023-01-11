@@ -1,4 +1,4 @@
-package com.github.leeg4ng.flygroovy.auth;
+package io.github.leeg4ng.flygroovy.auth;
 
 import org.springframework.http.HttpHeaders;
 

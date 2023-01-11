@@ -1,6 +1,6 @@
-package com.github.leeg4ng.flygroovy;
+package io.github.leeg4ng.flygroovy;
 
-import com.github.leeg4ng.flygroovy.auth.AuthPolicy;
+import io.github.leeg4ng.flygroovy.auth.AuthPolicy;
 import groovy.lang.GroovyClassLoader;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;

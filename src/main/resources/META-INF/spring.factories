@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.leeg4ng.flygroovy.FlygroovyAutoConfiguration
+  io.github.leeg4ng.flygroovy.FlygroovyAutoConfiguration

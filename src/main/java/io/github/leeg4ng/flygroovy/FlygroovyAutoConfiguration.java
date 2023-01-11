@@ -1,12 +1,11 @@
-package com.github.leeg4ng.flygroovy;
+package io.github.leeg4ng.flygroovy;
 
-import com.github.leeg4ng.flygroovy.auth.AuthPolicy;
-import com.github.leeg4ng.flygroovy.auth.NoAuthPolicy;
+import io.github.leeg4ng.flygroovy.auth.AuthPolicy;
+import io.github.leeg4ng.flygroovy.auth.NoAuthPolicy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

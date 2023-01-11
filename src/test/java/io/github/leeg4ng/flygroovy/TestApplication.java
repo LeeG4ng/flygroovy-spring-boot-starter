@@ -1,4 +1,4 @@
-package com.github.leeg4ng.flygroovy;
+package io.github.leeg4ng.flygroovy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

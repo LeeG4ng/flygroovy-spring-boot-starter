@@ -1,4 +1,4 @@
-package com.github.leeg4ng.flygroovy;
+package io.github.leeg4ng.flygroovy;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
