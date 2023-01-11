@@ -1,0 +1,6 @@
+server:
+  port: 9999
+
+flygroovy:
+  enabled: true
+  path: /groovy
