@@ -1,5 +1,11 @@
 package io.github.leeg4ng.flygroovy;
 
+import com.fasterxml.jackson.core.json.JsonWriteFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.github.leeg4ng.flygroovy.auth.AuthPolicy;
 import groovy.lang.GroovyClassLoader;
 import lombok.SneakyThrows;
@@ -16,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -114,8 +122,26 @@ public class GroovyController {
             }
 
             // 找到匹配方法
-            Object ret = method.invoke(groovyBean, params);
-            return ret == null ? "null" : ret.toString();
+            Object ret;
+            try {
+                ret = method.invoke(groovyBean, params);
+            } catch (Exception e) {
+                // invoke error, return exception stack
+                StringWriter stringWriter = new StringWriter();
+                e.printStackTrace(new PrintWriter(stringWriter));
+                return stringWriter.toString();
+            }
+
+            try {
+                JsonMapper jsonMapper = JsonMapper.builder()
+                        .disable(MapperFeature.USE_ANNOTATIONS)
+                        .enable(SerializationFeature.INDENT_OUTPUT)
+                        .build();
+
+                return ret == null ? "null" : jsonMapper.writeValueAsString(ret);
+            } catch (Exception ignored) {
+                return ret.toString();
+            }
         }
         return String.format("Method \"%s\" Not Found / Parameter Bind Error", methodName);
     }
