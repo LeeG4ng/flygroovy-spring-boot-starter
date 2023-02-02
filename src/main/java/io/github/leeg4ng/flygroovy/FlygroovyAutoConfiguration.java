@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.condition.PathPatternsRequestCondition;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.util.pattern.PathPatternParser;
@@ -40,12 +41,9 @@ public class FlygroovyAutoConfiguration {
         GroovyController groovyController = new GroovyController();
 
         RequestMappingHandlerMapping handlerMapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
-        RequestMappingInfo.BuilderConfiguration options = new RequestMappingInfo.BuilderConfiguration();
-        options.setPatternParser(new PathPatternParser());
         RequestMappingInfo requestMappingInfo = RequestMappingInfo
                 .paths(flygroovyProperties.getPath())
                 .methods(RequestMethod.POST)
-                .options(options)
                 .build();
         try {
             handlerMapping.registerMapping(requestMappingInfo, groovyController, GroovyController.class.getDeclaredMethod("exec", HttpHeaders.class, String.class, String.class, List.class));
